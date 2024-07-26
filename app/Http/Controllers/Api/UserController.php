@@ -72,6 +72,11 @@ class UserController extends Controller
 
     public function logout()
     {
+        auth()->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'logged out',
+        ]);
     }
 
     public function changepassword(Request $request)
